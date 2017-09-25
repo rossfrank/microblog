@@ -15,10 +15,9 @@ defmodule MicroblogWeb.Router do
 
   scope "/", MicroblogWeb do
     pipe_through :browser # Use the default browser stack
-
+    resources "/messages", MessageController
     get "/", PageController, :index
   end
-
   # Other scopes may use custom stacks.
   # scope "/api", MicroblogWeb do
   #   pipe_through :api

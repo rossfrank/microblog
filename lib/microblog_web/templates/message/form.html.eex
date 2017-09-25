@@ -1,0 +1,59 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :postingUser, class: "control-label" %>
+    <%= text_input f, :postingUser, class: "form-control" %>
+    <%= error_tag f, :postingUser %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :messageID, class: "control-label" %>
+    <%= number_input f, :messageID, class: "form-control" %>
+    <%= error_tag f, :messageID %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :message, class: "control-label" %>
+    <%= text_input f, :message, class: "form-control" %>
+    <%= error_tag f, :message %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :likes, class: "control-label" %>
+    <%= number_input f, :likes, class: "form-control" %>
+    <%= error_tag f, :likes %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :replies, class: "control-label" %>
+    <%= text_input f, :replies, class: "form-control" %>
+    <%= error_tag f, :replies %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :replyOf, class: "control-label" %>
+    <%= number_input f, :replyOf, class: "form-control" %>
+    <%= error_tag f, :replyOf %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :hashtags, class: "control-label" %>
+    <%= text_input f, :hashtags, class: "form-control" %>
+    <%= error_tag f, :hashtags %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :mentions, class: "control-label" %>
+    <%= text_input f, :mentions, class: "form-control" %>
+    <%= error_tag f, :mentions %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

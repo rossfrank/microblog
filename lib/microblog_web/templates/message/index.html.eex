@@ -1,39 +1,27 @@
-<h2>Listing Messages</h2>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hw02 Design</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<h2>Messages</h2>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>Postinguser</th>
-      <th>Messageid</th>
-      <th>Message</th>
-      <th>Likes</th>
-      <th>Replies</th>
-      <th>Replyof</th>
-      <th>Hashtags</th>
-      <th>Mentions</th>
-
-      <th></th>
-    </tr>
-  </thead>
   <tbody>
-<%= for message <- @messages do %>
-    <tr>
-      <td><%= message.postingUser %></td>
-      <td><%= message.messageID %></td>
-      <td><%= message.message %></td>
-      <td><%= message.likes %></td>
-      <td><%= message.replies %></td>
-      <td><%= message.replyOf %></td>
-      <td><%= message.hashtags %></td>
-      <td><%= message.mentions %></td>
-
-      <td class="text-right">
-        <span><%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
-<% end %>
+    <%= for message <- @messages do %>
+      <tr>
+        <div class="col-md-4 my-2">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="md-1"><span><%= link message.postingUser, to: user_path(@conn, :show, message.postingUser) %></span></h3>
+              <p><%= message.message %></p>
+              <p><%= message.likes %> &#x1F44D Reply</p>
+            </div>
+          </div>
+        </div>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

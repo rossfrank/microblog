@@ -26,7 +26,11 @@ defmodule MicroblogWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Accounts.get_user!(id)
+    if is_integer(id) do
+      user = Accounts.get_user!(id)
+    else
+      user = Accounts.get_user_by_username(id)
+    end
     render(conn, "show.html", user: user)
   end
 

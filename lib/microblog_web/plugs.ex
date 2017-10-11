@@ -10,5 +10,4 @@ defmodule MicroblogWeb.Plugs do
       assign(conn, :current_user, nil)
     end
   end
-
 end

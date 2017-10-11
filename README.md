@@ -2,6 +2,6 @@
 ### https://github.com/rossfrank/microblog
 ### [microblog.rossfrank.party](http://microblog.rossfrank.party)
 
+When a logged in user clicks the like button they like the message, the number should update and color of the button change to notify user that they can unlike the message by clicking on it
 
-When User logs in it adds the user id to the session
-When the User logs out the user id in the session is set to nil
+currently only adding likes works and they can be seen at http://microblog.rossfrank.party/api/likes

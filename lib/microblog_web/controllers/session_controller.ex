@@ -2,7 +2,7 @@ defmodule MicroblogWeb.SessionController do
   use MicroblogWeb, :controller
 
   alias Microblog.Accounts
-
+  
   def login(conn, %{"username" => username}) do
     user = Accounts.get_user_by_username(username)
 

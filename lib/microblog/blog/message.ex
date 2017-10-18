@@ -5,14 +5,14 @@ defmodule Microblog.Blog.Message do
 
 
   schema "messages" do
-    field :hashtags, :string
-    field :likes, :integer
-    field :mentions, :string
+    field :hashtags, :string, default: "none"
+    field :likes, :integer, default: 0
+    field :mentions, :string, default: "none"
     field :message, :string
-    field :messageID, :integer
+    field :messageID, :integer, default: 0
     field :postingUser, :string
-    field :replies, :string
-    field :replyOf, :integer
+    field :replies, :string, default: "none"
+    field :replyOf, :integer, default: 0
 
     timestamps()
   end

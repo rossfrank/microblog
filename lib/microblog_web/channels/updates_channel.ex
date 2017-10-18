@@ -1,12 +1,24 @@
 defmodule MicroblogWeb.UpdatesChannel do
   use MicroblogWeb, :channel
+  alias Microblog.Blog
 
-  def join("updates:lobby", payload, socket) do
+  def join("updates:all", payload, socket) do
     if authorized?(payload) do
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
+  end
+
+  def handle_in("new_msg", %{"body" => body}, socket) do
+    broadcast! socket, "new_msg", %{body: body}
+    Blog.create_message(%{postingUser: @current_user, message: body})
+    {:noreply, socket}
+  end
+
+  def handle_out("new_msg", payload, socket) do
+    push socket, "new_msg", payload
+    {:noreply, socket}
   end
 
   # Channels can be used in a request/response fashion

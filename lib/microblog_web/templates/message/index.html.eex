@@ -62,5 +62,7 @@
       <% end %>
     </tbody>
   </table>
-  <span><%= link "New Message", to: message_path(@conn, :new) %></span>
+  <%= if @current_user do %>
+    <span><%= link "New Message", to: message_path(@conn, :new) %></span>
+  <% end %>
 </body>
